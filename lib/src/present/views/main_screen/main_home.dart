@@ -19,47 +19,93 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
         child: Column(
           children: [
             Text(
-              'Buttons',
+              'Column Aligns',
               style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w600,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            TextButton(
-              onPressed: () {
-                print('Clicked ');
-              },
-              child: Text('Text Button'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                print('Clicked');
-              },
-              child: Text('Elevated Button'),
-            ),
-            OutlinedButton(
-              onPressed: () {
-                print('Clicked');
-              },
-              child: Text('Outlined Button'),
-            ),
-            SizedBox(
-              height: 15,
+            Container(
+              color: Colors.green[100],
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'Buttons',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        print('Clicked ');
+                      },
+                      child: Text('Text Button'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        print('Clicked');
+                      },
+                      child: Text('Elevated Button'),
+                    ),
+                    OutlinedButton(
+                      onPressed: () {
+                        print('Clicked');
+                      },
+                      child: Text('Outlined Button'),
+                    ),
+                    Text(
+                      'Images',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: InkWell(
+                        onTap: () {
+                          print('image clicked');
+                        },
+                        child: Image.asset('assets/images/flutter.png'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             Text(
-              'Images',
+              'Row Aligns',
               style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w600,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Image.asset('assets/images/flutter.png'),
-            ),
+            Container(
+              color: Colors.green[100],
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Image.asset(
+                      'assets/images/python.png',
+                      height: 70,
+                    ),
+                    Image.asset(
+                      'assets/images/java.png',
+                      height: 70,
+                    ),
+                    Image.asset(
+                      'assets/images/swift.png',
+                      height: 70,
+                    ),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
