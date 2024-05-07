@@ -16,21 +16,37 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
         title: const Text('Flutter Demo'),
       ),
       body: Center(
-        child: Container(
-          color: Colors.blueGrey,
-          height: 100,
-          width: 150,
-          child: Center(
-            child: Text(
-              'Demo Application',
-              textAlign: TextAlign.center,
+        child: Column(
+          children: [
+            Text(
+              'Buttons',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 24,
                 fontWeight: FontWeight.w600,
-                color: Colors.white,
               ),
             ),
-          ),
+            SizedBox(
+              height: 30,
+            ),
+            TextButton(
+              onPressed: () {
+                print('Clicked ');
+              },
+              child: Text('Text Button'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                print('Clicked');
+              },
+              child: Text('Elevated Button'),
+            ),
+            OutlinedButton(
+              onPressed: () {
+                print('Clicked');
+              },
+              child: Text('Outlined Button'),
+            ),
+          ],
         ),
       ),
     );
