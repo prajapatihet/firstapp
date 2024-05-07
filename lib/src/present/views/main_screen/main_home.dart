@@ -26,7 +26,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               ),
             ),
             SizedBox(
-              height: 30,
+              height: 10,
             ),
             TextButton(
               onPressed: () {
@@ -45,6 +45,20 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                 print('Clicked');
               },
               child: Text('Outlined Button'),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Text(
+              'Images',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Image.asset('assets/images/flutter.png'),
             ),
           ],
         ),
