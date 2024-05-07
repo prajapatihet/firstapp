@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({super.key});
@@ -14,99 +15,127 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: const Text('Flutter Demo'),
+        elevation: 2,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Text(
-              'Column Aligns',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Container(
-              color: Colors.green[100],
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      'Buttons',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        print('Clicked ');
-                      },
-                      child: Text('Text Button'),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        print('Clicked');
-                      },
-                      child: Text('Elevated Button'),
-                    ),
-                    OutlinedButton(
-                      onPressed: () {
-                        print('Clicked');
-                      },
-                      child: Text('Outlined Button'),
-                    ),
-                    Text(
-                      'Images',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25),
-                      child: InkWell(
-                        onTap: () {
-                          print('image clicked');
-                        },
-                        child: Image.asset('assets/images/flutter.png'),
-                      ),
-                    ),
-                  ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              Text(
+                'ScrollView',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-            Text(
-              'Row Aligns',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
+              SizedBox(
+                height: 20,
               ),
-            ),
-            Container(
-              color: Colors.green[100],
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Image.asset(
-                      'assets/images/python.png',
-                      height: 70,
+                    Container(
+                      margin: EdgeInsets.only(right: 10),
+                      width: 200,
+                      height: 200,
+                      color: Colors.blue,
                     ),
-                    Image.asset(
-                      'assets/images/java.png',
-                      height: 70,
+                    Container(
+                      margin: EdgeInsets.only(right: 10),
+                      width: 200,
+                      height: 200,
+                      color: Colors.orange,
                     ),
-                    Image.asset(
-                      'assets/images/swift.png',
-                      height: 70,
+                    Container(
+                      margin: EdgeInsets.only(right: 10),
+                      width: 200,
+                      height: 200,
+                      color: Colors.red,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 10),
+                      width: 200,
+                      height: 200,
+                      color: Colors.green,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 10),
+                      width: 200,
+                      height: 200,
+                      color: Colors.grey,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 10),
+                      width: 200,
+                      height: 200,
+                      color: Colors.blue,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 10),
+                      width: 200,
+                      height: 200,
+                      color: Colors.orange,
                     ),
                   ],
                 ),
               ),
-            )
-          ],
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                height: 200,
+                color: Colors.redAccent,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                height: 200,
+                color: Colors.orange,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                height: 200,
+                color: Colors.red,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                height: 200,
+                color: Colors.green,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                height: 200,
+                color: Colors.grey,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                height: 200,
+                color: Colors.blue,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                height: 200,
+                color: Colors.orange,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                height: 200,
+                color: Colors.red,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                height: 200,
+                color: Colors.green,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                height: 200,
+                color: Colors.grey,
+              ),
+            ],
+          ),
         ),
       ),
     );
