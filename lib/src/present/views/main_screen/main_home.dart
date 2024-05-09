@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({super.key});
@@ -23,7 +24,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Current Time -> ${time.hour}:${time.minute}:${time.second}',
+              'Current Time -> ${DateFormat('jms').format(time)}\nCurrent Time -> ${DateFormat('Hms').format(time)}\nCurrent Date -> ${DateFormat('yMMMMd').format(time)}',
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
