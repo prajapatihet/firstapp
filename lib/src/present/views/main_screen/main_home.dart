@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:intl/intl.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({super.key});
@@ -10,7 +8,20 @@ class MainHomeScreen extends StatefulWidget {
 }
 
 class _MainHomeScreenState extends State<MainHomeScreen> {
-  var time = DateTime.now();
+  var arrColors = [
+    Colors.red,
+    Colors.blue,
+    Colors.grey,
+    Colors.red,
+    Colors.blueGrey,
+    Colors.green,
+    Colors.yellow,
+    Colors.lightBlue,
+    Colors.redAccent,
+    Colors.deepOrange,
+    Colors.amber
+  ];
+  // var time = DateTime.now();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,22 +32,52 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Current Time -> ${DateFormat('jms').format(time)}\nCurrent Time -> ${DateFormat('Hms').format(time)}\nCurrent Date -> ${DateFormat('yMMMMd').format(time)}',
-              style: const TextStyle(
+            const Text(
+              'Select Date',
+              style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
               ),
             ),
             ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  time = DateTime.now();
-                });
+              onPressed: () async {
+                DateTime? pickdate = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2020),
+                  lastDate: DateTime(2025),
+                );
+
+                if (pickdate != null) {
+                  print(pickdate);
+                }
               },
-              child: const Text('Current Time'),
+              child: const Text('Pick Date'),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            const Text(
+              'Select Time',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                TimeOfDay? picktime = await showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay.now(),
+                  initialEntryMode: TimePickerEntryMode.dial,
+                );
+
+                if (picktime != null) {
+                  print(picktime);
+                }
+              },
+              child: const Text('Pick Time'),
             ),
           ],
         ),
