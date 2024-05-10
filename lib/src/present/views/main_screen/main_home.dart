@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({super.key});
@@ -25,20 +27,72 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: const Text('Flutter Demo'),
-          elevation: 2,
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 145, 243, 33),
+        title: const Text('Flutter Demo'),
+        elevation: 2,
+      ),
+      body: Container(
+        child: Column(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Container(
+                color: Colors.blue,
+                child: ListView.builder(
+                  itemBuilder: (context, index) => const Padding(
+                    padding: EdgeInsets.all(11.0),
+                    child: SizedBox(
+                      width: 100,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.green,
+                      ),
+                    ),
+                  ),
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 4,
+              child: Container(
+                color: Colors.orange,
+                child: ListView.builder(
+                  itemBuilder: (context, index) => ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.green,
+                    ),
+                    title: Text('Name'),
+                    subtitle: Text('Number'),
+                    trailing: Icon(Icons.delete),
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                color: Colors.grey,
+                child: ListView.builder(
+                  itemBuilder: (context, index) => Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Container(
+                      width: 150,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.blue),
+                    ),
+                  ),
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                ),
+              ),
+            ),
+            Expanded(flex: 2, child: Container(color: Colors.green)),
+          ],
         ),
-        body: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
-          itemBuilder: (context, index) {
-            return Container(
-              color: arrColors[index],
-            );
-          },
-          itemCount: arrColors.length,
-        ));
+      ),
+    );
   }
 }
