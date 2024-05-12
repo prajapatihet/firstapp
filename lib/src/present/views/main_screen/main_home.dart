@@ -25,7 +25,14 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
     Colors.amber
   ];
   RangeValues value = RangeValues(0, 100);
+
   // var time = DateTime.now();
+
+  var _width = 200.0;
+  var _height = 200.0;
+  bool flag = true;
+  Color bgColor = Colors.orange;
+
   @override
   Widget build(BuildContext context) {
     RangeLabels label =
@@ -36,73 +43,34 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
         title: const Text('Flutter Demo'),
         elevation: 2,
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: RadialGradient(
-            colors: [Colors.orange.shade200, Colors.brown.shade200],
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Text(
-                  'RangeSlider',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-              Center(
-                child: RangeSlider(
-                    values: value,
-                    labels: label,
-                    divisions: 10,
-                    activeColor: Colors.green,
-                    inactiveColor: Colors.grey[200],
-                    min: 0,
-                    max: 100,
-                    onChanged: (newValue) {
-                      setState(() {
-                        value = newValue;
-                      });
-                    }),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.elliptical(30, 70)),
-                  child: Container(
-                    height: 150,
-                    color: Colors.blueAccent,
-                    child: Image.asset('assets/images/flutter.png'),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50)),
-                  child: Container(
-                    height: 150,
-                    color: Colors.blueAccent,
-                    child: Image.asset('assets/images/flutter.png'),
-                  ),
-                ),
-              )
-            ],
-          ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AnimatedContainer(
+              duration: Duration(seconds: 2),
+              width: _width,
+              height: _height,
+              color: bgColor,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    if (flag) {
+                      _width = 300.0;
+                      _height = 300.0;
+                      flag = false;
+                      bgColor = Colors.redAccent;
+                    } else {
+                      _width = 200.0;
+                      _height = 200.0;
+                      flag = true;
+                      bgColor = Colors.orange;
+                    }
+                  });
+                },
+                child: Text('Animatation'))
+          ],
         ),
       ),
     );
