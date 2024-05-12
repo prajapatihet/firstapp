@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({super.key});
@@ -23,74 +24,85 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
     Colors.deepOrange,
     Colors.amber
   ];
+  RangeValues value = RangeValues(0, 100);
   // var time = DateTime.now();
   @override
   Widget build(BuildContext context) {
+    RangeLabels label =
+        RangeLabels(value.start.toString(), value.end.toString());
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 145, 243, 33),
+        backgroundColor: Color.fromARGB(255, 58, 103, 238),
         title: const Text('Flutter Demo'),
         elevation: 2,
       ),
       body: Container(
-        child: Column(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Container(
-                color: Colors.blue,
-                child: ListView.builder(
-                  itemBuilder: (context, index) => const Padding(
-                    padding: EdgeInsets.all(11.0),
-                    child: SizedBox(
-                      width: 100,
-                      child: CircleAvatar(
-                        backgroundColor: Colors.green,
-                      ),
-                    ),
-                  ),
-                  itemCount: 10,
-                  scrollDirection: Axis.horizontal,
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 4,
-              child: Container(
-                color: Colors.orange,
-                child: ListView.builder(
-                  itemBuilder: (context, index) => ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.green,
-                    ),
-                    title: Text('Name'),
-                    subtitle: Text('Number'),
-                    trailing: Icon(Icons.delete),
+        decoration: BoxDecoration(
+          gradient: RadialGradient(
+            colors: [Colors.orange.shade200, Colors.brown.shade200],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Text(
+                  'RangeSlider',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                color: Colors.grey,
-                child: ListView.builder(
-                  itemBuilder: (context, index) => Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Container(
-                      width: 150,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.blue),
-                    ),
+              Center(
+                child: RangeSlider(
+                    values: value,
+                    labels: label,
+                    divisions: 10,
+                    activeColor: Colors.green,
+                    inactiveColor: Colors.grey[200],
+                    min: 0,
+                    max: 100,
+                    onChanged: (newValue) {
+                      setState(() {
+                        value = newValue;
+                      });
+                    }),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.elliptical(30, 70)),
+                  child: Container(
+                    height: 150,
+                    color: Colors.blueAccent,
+                    child: Image.asset('assets/images/flutter.png'),
                   ),
-                  itemCount: 10,
-                  scrollDirection: Axis.horizontal,
                 ),
               ),
-            ),
-            Expanded(flex: 2, child: Container(color: Colors.green)),
-          ],
+              SizedBox(
+                height: 50,
+              ),
+              Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      bottomRight: Radius.circular(50)),
+                  child: Container(
+                    height: 150,
+                    color: Colors.blueAccent,
+                    child: Image.asset('assets/images/flutter.png'),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
