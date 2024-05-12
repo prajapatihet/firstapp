@@ -11,21 +11,6 @@ class MainHomeScreen extends StatefulWidget {
 }
 
 class _MainHomeScreenState extends State<MainHomeScreen> {
-  var arrColors = [
-    Colors.red,
-    Colors.blue,
-    Colors.grey,
-    Colors.red,
-    Colors.blueGrey,
-    Colors.green,
-    Colors.yellow,
-    Colors.lightBlue,
-    Colors.redAccent,
-    Colors.deepOrange,
-    Colors.amber
-  ];
-  RangeValues value = RangeValues(0, 100);
-
   // var time = DateTime.now();
 
   var _width = 200.0;
@@ -33,44 +18,123 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   bool flag = true;
   Color bgColor = Colors.orange;
 
+  var myOpacity = 1.0;
+  bool opflag = true;
+
+  bool isFirst = true;
+
+  void reload() {
+    setState(() {
+      if (isFirst) {
+        isFirst = false;
+      } else {
+        isFirst = true;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    RangeLabels label =
-        RangeLabels(value.start.toString(), value.end.toString());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 58, 103, 238),
         title: const Text('Flutter Demo'),
         elevation: 2,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AnimatedContainer(
-              duration: Duration(seconds: 2),
-              width: _width,
-              height: _height,
-              color: bgColor,
+      body: SingleChildScrollView(
+        child: SizedBox(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AnimatedContainer(
+                  duration: Duration(seconds: 2),
+                  width: _width,
+                  height: _height,
+                  color: bgColor,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      if (flag) {
+                        _width = 300.0;
+                        _height = 300.0;
+                        flag = false;
+                        bgColor = Colors.redAccent;
+                      } else {
+                        _width = 200.0;
+                        _height = 200.0;
+                        flag = true;
+                        bgColor = Colors.orange;
+                      }
+                    });
+                  },
+                  child: Text('Animatation'),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                AnimatedOpacity(
+                  opacity: myOpacity,
+                  duration: Duration(seconds: 1),
+                  curve: Curves.fastOutSlowIn,
+                  child: Container(
+                    width: 200,
+                    height: 200,
+                    color: Colors.amber,
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      if (opflag) {
+                        myOpacity = 0.0;
+                        opflag = false;
+                      } else {
+                        myOpacity = 1.0;
+                        opflag = true;
+                      }
+                    });
+                  },
+                  child: Text('Opacity'),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                AnimatedCrossFade(
+                  firstChild: Image.asset(
+                    'assets/images/card-close.png',
+                    width: 300,
+                    height: 300,
+                  ),
+                  secondChild: Image.asset(
+                    'assets/images/card-open.png',
+                    width: 300,
+                    height: 300,
+                  ),
+                  crossFadeState: isFirst
+                      ? CrossFadeState.showFirst
+                      : CrossFadeState.showSecond,
+                  duration: Duration(seconds: 2),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    reload();
+                  },
+                  child: Text('Cross-Fade'),
+                ),
+              ],
             ),
-            ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    if (flag) {
-                      _width = 300.0;
-                      _height = 300.0;
-                      flag = false;
-                      bgColor = Colors.redAccent;
-                    } else {
-                      _width = 200.0;
-                      _height = 200.0;
-                      flag = true;
-                      bgColor = Colors.orange;
-                    }
-                  });
-                },
-                child: Text('Animatation'))
-          ],
+          ),
         ),
       ),
     );
