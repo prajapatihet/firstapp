@@ -32,7 +32,7 @@ class _ListAnimation3DState extends State<ListAnimation3D> {
                     child: Center(
                       child: Text(
                         '$value',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),

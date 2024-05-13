@@ -170,12 +170,12 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ListAnimation3D(),
+                          builder: (context) => const ListAnimation3D(),
                         ),
                       );
                     },
                     icon: const Icon(Icons.arrow_forward),
-                    label: const Text('ListWheel  '),
+                    label: const Text('ListWheel'),
                   ),
                   const SizedBox(
                     height: 70,
@@ -185,7 +185,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => TweenAnimation(),
+                          builder: (context) => const TweenAnimation(),
                         ),
                       );
                     },
