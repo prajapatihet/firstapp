@@ -1,5 +1,6 @@
 import 'package:firstapp/src/present/views/home_screen/hero_animation.dart';
 import 'package:firstapp/src/present/views/home_screen/list_3d.dart';
+import 'package:firstapp/src/present/views/home_screen/tween_anim.dart';
 import 'package:flutter/material.dart';
 
 class MainHomeScreen extends StatefulWidget {
@@ -174,7 +175,22 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                       );
                     },
                     icon: const Icon(Icons.arrow_forward),
-                    label: const Text('Next'),
+                    label: const Text('ListWheel  '),
+                  ),
+                  const SizedBox(
+                    height: 70,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TweenAnimation(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.arrow_forward),
+                    label: const Text('Tween'),
                   ),
                 ],
               ),
