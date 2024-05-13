@@ -1,8 +1,6 @@
 import 'package:firstapp/src/present/views/home_screen/hero_animation.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:firstapp/src/present/views/home_screen/list_3d.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({super.key});
@@ -38,7 +36,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 58, 103, 238),
+        backgroundColor: const Color.fromARGB(255, 58, 103, 238),
         title: const Text('Flutter Demo'),
         elevation: 2,
       ),
@@ -51,12 +49,12 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   AnimatedContainer(
-                    duration: Duration(seconds: 2),
+                    duration: const Duration(seconds: 2),
                     width: _width,
                     height: _height,
                     color: bgColor,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   ElevatedButton(
@@ -75,14 +73,14 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                         }
                       });
                     },
-                    child: Text('Animatation'),
+                    child: const Text('Animatation'),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   AnimatedOpacity(
                     opacity: myOpacity,
-                    duration: Duration(seconds: 1),
+                    duration: const Duration(seconds: 1),
                     curve: Curves.fastOutSlowIn,
                     child: Container(
                       width: 200,
@@ -124,7 +122,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                     crossFadeState: isFirst
                         ? CrossFadeState.showFirst
                         : CrossFadeState.showSecond,
-                    duration: Duration(seconds: 2),
+                    duration: const Duration(seconds: 2),
                   ),
                   const SizedBox(
                     height: 10,
@@ -164,7 +162,19 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                     ),
                   ),
                   const SizedBox(
-                    height: 100,
+                    height: 70,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ListAnimation3D(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.arrow_forward),
+                    label: const Text('Next'),
                   ),
                 ],
               ),
