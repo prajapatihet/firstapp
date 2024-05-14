@@ -13,21 +13,20 @@ class _TweenAnimationState extends State<TweenAnimation>
   late Animation animationColor;
 
   late AnimationController animationController;
-  final _begin = 200.0;
-  final _end = 100.0;
   @override
   void initState() {
     super.initState();
     animationController =
         AnimationController(vsync: this, duration: const Duration(seconds: 1));
-    animation = Tween(begin: _begin, end: _end).animate(animationController);
+    animation = Tween(begin: 200.0, end: 100.0).animate(animationController);
     animationColor = ColorTween(begin: Colors.blue, end: Colors.orange)
         .animate(animationController);
 
     animationController.addListener(() {
       setState(() {});
     });
-    animationController.repeat(reverse: true);
+    animationController.forward();
+    // animationController.repeat(reverse: true);
   }
 
   @override

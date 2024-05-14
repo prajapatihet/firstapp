@@ -1,5 +1,6 @@
 import 'package:firstapp/src/present/views/home_screen/hero_animation.dart';
 import 'package:firstapp/src/present/views/home_screen/list_3d.dart';
+import 'package:firstapp/src/present/views/home_screen/ripple_anim.dart';
 import 'package:firstapp/src/present/views/home_screen/tween_anim.dart';
 import 'package:flutter/material.dart';
 
@@ -191,6 +192,21 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                     },
                     icon: const Icon(Icons.arrow_forward),
                     label: const Text('Tween'),
+                  ),
+                  const SizedBox(
+                    height: 70,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RippleEffectAnimation(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.arrow_forward),
+                    label: const Text('Ripple Effect'),
                   ),
                 ],
               ),
