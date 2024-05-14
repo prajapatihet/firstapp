@@ -1,4 +1,5 @@
 import 'package:firstapp/src/present/views/main_screen/main_home.dart';
+import 'package:firstapp/src/present/views/main_screen/shared_pref.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 81, 239, 28)),
         useMaterial3: true,
       ),
-      home: const MainHomeScreen(),
+      home: const SharedPrefScreen(),
     );
   }
 }

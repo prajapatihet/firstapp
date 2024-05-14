@@ -31,24 +31,34 @@ class _RippleEffectAnimationState extends State<RippleEffectAnimation>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ripple Effect'),
-      ),
-      body: Center(
-        child: Stack(
-          alignment: Alignment.center,
-          children: listRadius
-              .map((radius) => Container(
-                    width: radius * _animationController.value,
-                    height: radius * _animationController.value,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.blue
-                          .withOpacity(1.0 - _animationController.value),
-                    ),
-                  ))
-              .toList(),
+        appBar: AppBar(
+          title: const Text('Ripple Effect'),
         ),
+        body: Center(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              buildMyContainer(listRadius[0]),
+              buildMyContainer(listRadius[1]),
+              buildMyContainer(listRadius[2]),
+              buildMyContainer(listRadius[3]),
+              buildMyContainer(listRadius[4]),
+              const Icon(
+                Icons.home_work,
+                size: 40,
+              ),
+            ],
+          ),
+        ));
+  }
+
+  Widget buildMyContainer(radius) {
+    return Container(
+      width: radius * _animationController.value,
+      height: radius * _animationController.value,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.blue.withOpacity(1.0 - _animationController.value),
       ),
     );
   }
